@@ -1,10 +1,22 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { MongooseModule } from '@nestjs/mongoose'
+import { CentredModule as AdmCentredModule } from './apps/shared/centred/centred.module'
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_DB'),
+      }),
+      inject: [ConfigService],
+    }),
+    //App
+
+    //Admin
+    AdmCentredModule,
+  ],
 })
 export class AppModule {}

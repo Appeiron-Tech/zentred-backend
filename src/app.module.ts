@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 import { CentredModule as AdmCentredModule } from './apps/shared/centred/centred.module'
+import { CourseModule as AdmCourseModule } from './apps/admin/course/course.module'
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CentredModule as AdmCentredModule } from './apps/shared/centred/centred
 
     //Admin
     AdmCentredModule,
+    AdmCourseModule,
   ],
 })
 export class AppModule {}

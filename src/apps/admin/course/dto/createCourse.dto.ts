@@ -1,8 +1,8 @@
-import { IsNotEmpty, IsString, IsUUID } from 'class-validator'
+import { IsMongoId, IsNotEmpty, IsString } from 'class-validator'
 import { ObjectId } from 'mongodb'
 
 export class CreateCourseDto {
-  @IsUUID()
+  @IsMongoId()
   @IsNotEmpty()
   centredId: ObjectId
 

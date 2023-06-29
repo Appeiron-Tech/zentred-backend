@@ -1,4 +1,4 @@
-import { IsDecimal, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import { IsDecimal, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from 'class-validator'
 
 export class UpdateCourseDto {
   @IsOptional()
@@ -22,6 +22,7 @@ export class UpdateCourseDto {
 
   @IsOptional()
   @IsString()
+  @MaxLength(3)
   currency?: string
 
   @IsOptional()

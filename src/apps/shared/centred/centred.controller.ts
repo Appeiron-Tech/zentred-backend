@@ -19,8 +19,8 @@ export class CentredController {
   async createCentred(): Promise<any> {
     try {
       const centred = await this.centredService.createCentred({
-        tenancyName: 'Appeiron',
-        officialName: 'Appeiron Technologies',
+        tenancyName: 'Appeiron 2',
+        officialName: 'Appeiron IO',
         country: 'ESP',
         type: 'Consultancy',
         currencyName: 'EUR',

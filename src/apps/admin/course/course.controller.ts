@@ -7,6 +7,17 @@ import { UpdateCourseDto } from './dto/updateCourse.dto'
 export class CourseController {
   constructor(private courseService: CourseService) {}
 
+  @Get('/')
+  async getAllCourses(): Promise<any> {
+    try {
+      const centredId = '6498a94e213a7fc800781e1a'
+      const course = await this.courseService.getCourses(centredId)
+      return course
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   @Get('/:id')
   async getCourse(@Param('id') courseId: string): Promise<any> {
     try {

@@ -22,6 +22,12 @@ export class Course implements ICourse {
   category: string
 
   @Prop({ type: String, maxLength: 16 })
+  language: string
+
+  @Prop({ type: Number })
+  level: string
+
+  @Prop({ type: String, maxLength: 16 })
   subCategory: string
 
   @Prop({ type: String, maxLength: 3 })

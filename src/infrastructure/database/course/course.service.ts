@@ -14,7 +14,7 @@ export class CourseService {
     return await this.courseModel.findOne(courseQuery).exec()
   }
 
-  async findAll(courseQuery: FilterQuery<Course>): Promise<any> {
+  async findAll(courseQuery: FilterQuery<Course>): Promise<any[]> {
     return await this.courseModel.find(courseQuery).exec()
   }
 

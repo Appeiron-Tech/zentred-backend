@@ -2,17 +2,18 @@ import { Controller, Get, Post, Param, Patch, Body } from '@nestjs/common'
 import { CourseService } from './course.service'
 import { CreateCourseDto } from './dto/createCourse.dto'
 import { UpdateCourseDto } from './dto/updateCourse.dto'
+import { IReadCourse } from './dto/readCourse.dto'
 
 @Controller('admin/course')
 export class CourseController {
   constructor(private courseService: CourseService) {}
 
   @Get('/')
-  async getAllCourses(): Promise<any> {
+  async getAllCourses(): Promise<IReadCourse[]> {
     try {
       const centredId = '6498a94e213a7fc800781e1a'
-      const course = await this.courseService.getCourses(centredId)
-      return course
+      const courses = await this.courseService.getCourses(centredId)
+      return courses
     } catch (e) {
       console.error(e)
     }

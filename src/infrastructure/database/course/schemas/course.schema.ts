@@ -21,10 +21,10 @@ export class Course implements ICourse {
   @Prop({ type: String, maxLength: 16, required: true })
   category: string
 
-  @Prop({ type: String, maxLength: 16 })
+  @Prop({ type: String, maxLength: 3 })
   language: string
 
-  @Prop({ type: Number })
+  @Prop({ type: String })
   level: string
 
   @Prop({ type: String, maxLength: 16 })

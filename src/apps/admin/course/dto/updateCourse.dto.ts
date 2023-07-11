@@ -9,6 +9,16 @@ export class UpdateCourseDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
+  language?: string
+
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  level?: string
+
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
   description?: string
 
   @IsOptional()

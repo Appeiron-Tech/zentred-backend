@@ -3,6 +3,7 @@ import { CourseService } from './course.service'
 import { CreateCourseDto } from './dto/createCourse.dto'
 import { UpdateCourseDto } from './dto/updateCourse.dto'
 import { IReadCourse } from './dto/readCourse.dto'
+import { Course } from './course.class'
 
 @Controller('admin/course')
 export class CourseController {
@@ -20,10 +21,11 @@ export class CourseController {
   }
 
   @Get('/:id')
-  async getCourse(@Param('id') courseId: string): Promise<any> {
+  async getCourse(@Param('id') courseId: string): Promise<IReadCourse> {
     try {
-      const course = await this.courseService.getCourse(courseId)
-      return course
+      const dbCourse = await this.courseService.getCourse(courseId)
+      const course = new Course(dbCourse)
+      return course.parseToRead()
     } catch (e) {
       console.error(e)
     }
@@ -40,10 +42,14 @@ export class CourseController {
   }
 
   @Patch('/:id')
-  async updateCourse(@Param('id') courseId: string, @Body() course: UpdateCourseDto): Promise<any> {
+  async updateCourse(
+    @Param('id') courseId: string,
+    @Body() course: UpdateCourseDto,
+  ): Promise<IReadCourse> {
     try {
-      const updatedCourse = await this.courseService.updateCourse(courseId, course)
-      return updatedCourse
+      const dbUpdatedCourse = await this.courseService.updateCourse(courseId, course)
+      const updateCourse = new Course(dbUpdatedCourse)
+      return updateCourse.parseToRead()
     } catch (e) {
       console.error(e)
     }

@@ -25,7 +25,7 @@ export class Centred implements ICentred {
   favicon: string
 
   @Prop({ type: String, maxLength: 3 })
-  currencyName: string
+  currency: string
 
   @Prop({ type: String })
   ga_email_analytics: string
@@ -38,6 +38,9 @@ export class Centred implements ICentred {
 
   @Prop({ type: [{ type: MongooseSchema.Types.Mixed }] })
   apps: ICentredApp[]
+
+  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'School' }] })
+  schools: MongooseSchema.Types.ObjectId[]
 
   @Prop({ type: Date, default: Date.now })
   updatedAt: Date

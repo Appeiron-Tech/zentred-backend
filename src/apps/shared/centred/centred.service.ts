@@ -20,4 +20,12 @@ export class CentredService {
       throw error
     }
   }
+
+  async createSchool(school: any): Promise<any> {
+    try {
+      return await this.dbCentredService.createSchool(school)
+    } catch (error) {
+      throw error
+    }
+  }
 }

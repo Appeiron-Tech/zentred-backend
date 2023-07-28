@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Centred, CentredDocument } from './centred/schemas/centred.schema'
 import { FilterQuery, Model } from 'mongoose'
-import { ICentred } from './centred/interfaces/centred.interface'
+import { ICentred, IUpdateCentred } from './centred/interfaces/centred.interface'
 import { ISchool } from './school/interfaces/school.interface'
 import { School, SchoolDocument } from './school/schemas/school.schema'
+import { ObjectId } from 'mongodb'
 
 @Injectable()
 export class CentredService {
@@ -35,5 +36,10 @@ export class CentredService {
 
   async createSchool(school: Partial<ISchool>): Promise<ISchool> {
     return await this.schoolModel.create(school)
+  }
+
+  async update(id: string, centred: IUpdateCentred): Promise<ICentred> {
+    const _id = new ObjectId(id)
+    return await this.centredModel.findOneAndUpdate({ _id }, centred, { new: true })
   }
 }

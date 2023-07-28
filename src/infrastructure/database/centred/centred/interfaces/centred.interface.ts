@@ -1,11 +1,14 @@
 import { Schema } from 'mongoose'
 import { ICentredApp } from './centredApp.interface'
-import { ISchool } from '../../school/interfaces/school.interface'
 
 export interface ICentred {
   _id?: Schema.Types.ObjectId
   tenancyName: string
+  summary: string
+  coverUrl: string
+  profileUrl: string
   officialName: string
+  shortName: string
   country: string
   type: string
   favicon: string
@@ -17,4 +20,17 @@ export interface ICentred {
   schools: any[]
   updatedAt: Date
   createdAt: Date
+}
+
+export interface IUpdateCentred {
+  title?: string
+  language?: string
+  level?: string
+  description?: string
+  category?: string
+  subCategory?: string
+  currency?: string
+  price?: number
+  duration?: number
+  durationUnit?: string
 }

@@ -12,8 +12,20 @@ export class Centred implements ICentred {
   @Prop({ type: String, maxLength: 32, required: true, unique: true })
   tenancyName: string
 
+  @Prop({ type: String, maxLength: 512 })
+  summary: string
+
   @Prop({ type: String, maxLength: 128 })
   officialName: string
+
+  @Prop({ type: String, maxLength: 50 })
+  shortName: string
+
+  @Prop({ type: String })
+  coverUrl: string
+
+  @Prop({ type: String })
+  profileUrl: string
 
   @Prop({ type: String, maxLength: 3 })
   country: string

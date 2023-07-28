@@ -1,14 +1,17 @@
-import { Schema } from 'mongoose'
-import { ICentredApp } from './centreApp.interface'
+import { ICentredApp } from './centredApp.interface'
 
 export interface IReadCentred {
-  _id?: Schema.Types.ObjectId
+  id: string
   tenancyName: string
+  summary: string
+  coverUrl: string
+  profileUrl: string
   officialName: string
+  shortName: string
   country: string
   type: string
   favicon: string
-  currencyName: string
+  currency: string
   apps: ICentredApp[]
   updatedAt: Date
   createdAt: Date

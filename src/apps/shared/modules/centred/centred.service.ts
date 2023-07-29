@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { CentredService as DBCentredService } from '../../../infrastructure/database/centred/centred.service'
+import { CentredService as DBCentredService } from '../../../../infrastructure/database/centred/centred.service'
 import { UpdateCentredDto } from './dto/updateCentred.dto'
 
 @Injectable()

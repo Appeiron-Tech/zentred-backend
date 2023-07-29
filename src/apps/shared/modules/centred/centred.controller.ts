@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common'
 import { CentredService } from './centred.service'
 import { Centred } from './centred.class'
 import { UpdateCentredDto } from './dto/updateCentred.dto'
+import { LoggerInterceptor } from '../../interceptors/app-logger.interceptor'
 
+@UseInterceptors(LoggerInterceptor)
 @Controller('admin/centred')
 export class CentredController {
   constructor(private centredService: CentredService) {}
@@ -10,8 +12,9 @@ export class CentredController {
   @Get('/:id')
   async getCentred(@Param('id') centredId: string): Promise<any> {
     try {
-      const centred = await this.centredService.getCentred(centredId)
-      return centred
+      const dbCentred = await this.centredService.getCentred(centredId)
+      const centred = new Centred(dbCentred)
+      return centred.parseToRead()
     } catch (e) {
       console.error(e)
     }

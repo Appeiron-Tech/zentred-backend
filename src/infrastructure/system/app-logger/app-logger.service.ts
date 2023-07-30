@@ -71,6 +71,14 @@ export class AppLoggerService extends Logger {
       responseSize: responseSize,
     }
 
-    super.log('http response log: \n' + JSON.stringify(httpLog))
+    if (httpLog.status >= 100 && httpLog.status < 300) {
+      super.log('http response log: \n' + JSON.stringify(httpLog))
+    }
+    if (httpLog.status >= 300 && httpLog.status < 500) {
+      super.warn('http warn log: \n' + JSON.stringify(httpLog))
+    }
+    if (httpLog.status >= 500 && httpLog.status < 600) {
+      super.error('http error log: \n' + JSON.stringify(httpLog))
+    }
   }
 }

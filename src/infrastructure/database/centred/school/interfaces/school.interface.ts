@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongoose'
+import { IContact } from '../../centred/interfaces/contact.interface'
 
 export interface ISchool {
   _id?: ObjectId
@@ -6,6 +7,7 @@ export interface ISchool {
   name: string
   description: string
   address: string
+  contact: IContact
   country: string
   type: string
   favicon: string

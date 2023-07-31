@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose'
 import { ICentredApp } from './centredApp.interface'
+import { IContact } from './contact.interface'
 
 export interface ICentred {
   _id?: Schema.Types.ObjectId
@@ -9,6 +10,7 @@ export interface ICentred {
   profileUrl: string
   officialName: string
   shortName: string
+  contact: IContact
   country: string
   type: string
   favicon: string

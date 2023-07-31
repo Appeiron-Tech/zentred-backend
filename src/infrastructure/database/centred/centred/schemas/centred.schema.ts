@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose'
 import { ICentred } from '../interfaces/centred.interface'
 import { ICentredApp } from '../interfaces/centredApp.interface'
+import { IContact } from '../interfaces/contact.interface'
 
 export type CentredDocument = HydratedDocument<Centred>
 
@@ -26,6 +27,9 @@ export class Centred implements ICentred {
 
   @Prop({ type: String })
   profileUrl: string
+
+  @Prop({ type: MongooseSchema.Types.Mixed })
+  contact: IContact
 
   @Prop({ type: String, maxLength: 3 })
   country: string

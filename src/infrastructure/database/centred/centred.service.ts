@@ -38,7 +38,7 @@ export class CentredService {
     return await this.schoolModel.create(school)
   }
 
-  async update(id: string, centred: IUpdateCentred): Promise<ICentred> {
+  async update(id: string, centred: IUpdateCentred): Promise<any> {
     const _id = new ObjectId(id)
     return await this.centredModel.findOneAndUpdate({ _id }, centred, { new: true })
   }

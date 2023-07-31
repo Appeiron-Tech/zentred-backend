@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common'
 import { CentredService } from './centred.service'
-import { Centred } from './centred.class'
 import { UpdateCentredDto } from './dto/updateCentred.dto'
 import { LoggerInterceptor } from '../../interceptors/app-logger.interceptor'
 
@@ -12,9 +11,7 @@ export class CentredController {
   @Get('/:id')
   async getCentred(@Param('id') centredId: string): Promise<any> {
     try {
-      const dbCentred = await this.centredService.getCentred(centredId)
-      const centred = new Centred(dbCentred)
-      return centred.parseToRead()
+      return await this.centredService.getCentred(centredId)
     } catch (e) {
       console.error(e)
     }
@@ -26,9 +23,7 @@ export class CentredController {
     @Body() centred: UpdateCentredDto,
   ): Promise<any> {
     try {
-      const dbUpdatedCentred = await this.centredService.updateCentred(centredId, centred)
-      const updateCentred = new Centred(dbUpdatedCentred)
-      return updateCentred.parseToRead()
+      return await this.centredService.updateCentred(centredId, centred)
     } catch (e) {
       console.error(e)
     }

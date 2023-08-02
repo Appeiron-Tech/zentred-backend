@@ -1,6 +1,7 @@
 import { ObjectId } from 'mongodb'
 import { ICentredApp } from './interfaces/centredApp.interface'
 import { IReadCentred } from './interfaces/readCentred.interface'
+import { IContact } from './interfaces/centredContact.interface'
 
 export interface ICentredDB {
   _id?: ObjectId
@@ -13,6 +14,7 @@ export interface ICentredDB {
   country: string
   type: string
   favicon: string
+  contact: IContact
   currency: string
   ga_email_analytics: string
   ga_view_id: string
@@ -36,6 +38,7 @@ export class Centred {
   type: string
   favicon: string
   currency: string
+  contact: IContact
   ga_email_analytics: string
   ga_view_id: string
   ga_api_key: string
@@ -55,6 +58,7 @@ export class Centred {
     this.shortName = dbCentred.shortName
     this.country = dbCentred.country
     this.type = dbCentred.type
+    this.contact = dbCentred.contact
     this.favicon = dbCentred.favicon
     this.currency = dbCentred.currency
     this.ga_email_analytics = dbCentred.ga_email_analytics
@@ -77,6 +81,7 @@ export class Centred {
       shortName: this.shortName,
       country: this.currency,
       type: this.type,
+      contact: this.contact,
       favicon: this.favicon,
       currency: this.currency,
       apps: this.apps,

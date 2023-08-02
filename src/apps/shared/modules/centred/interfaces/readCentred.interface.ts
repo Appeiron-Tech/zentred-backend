@@ -1,5 +1,6 @@
 import { ICentredApp } from './centredApp.interface'
 import { IContact } from './centredContact.interface'
+import { IReadSchool } from './readSchool.interface'
 
 export interface IReadCentred {
   id: string
@@ -12,6 +13,7 @@ export interface IReadCentred {
   country: string
   contact: IContact
   type: string
+  schools: IReadSchool[]
   favicon: string
   currency: string
   apps: ICentredApp[]

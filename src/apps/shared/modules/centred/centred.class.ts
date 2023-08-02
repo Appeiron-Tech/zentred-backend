@@ -2,6 +2,7 @@ import { ObjectId } from 'mongodb'
 import { ICentredApp } from './interfaces/centredApp.interface'
 import { IReadCentred } from './interfaces/readCentred.interface'
 import { IContact } from './interfaces/centredContact.interface'
+import { ISchoolDB, School } from './school.class'
 
 export interface ICentredDB {
   _id?: ObjectId
@@ -20,7 +21,7 @@ export interface ICentredDB {
   ga_view_id: string
   ga_api_key: string
   apps: ICentredApp[]
-  schools: any[]
+  schools: ISchoolDB[]
   updatedAt: Date
   createdAt: Date
 }
@@ -43,7 +44,7 @@ export class Centred {
   ga_view_id: string
   ga_api_key: string
   apps: ICentredApp[]
-  schools: any[]
+  schools: ISchoolDB[]
   updatedAt: Date
   createdAt: Date
 
@@ -71,6 +72,7 @@ export class Centred {
   }
 
   public parseToRead(): IReadCentred {
+    const readSchools = this.schools?.map((dbSchool) => new School(dbSchool).parseToRead()) ?? []
     return {
       id: this.id,
       tenancyName: this.tenancyName,
@@ -83,6 +85,7 @@ export class Centred {
       type: this.type,
       contact: this.contact,
       favicon: this.favicon,
+      schools: readSchools,
       currency: this.currency,
       apps: this.apps,
       updatedAt: this.updatedAt,

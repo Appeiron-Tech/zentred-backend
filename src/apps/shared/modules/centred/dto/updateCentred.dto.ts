@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
+import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator'
+import { IContact } from '../interfaces/centredContact.interface'
 
 export class UpdateCentredDto {
   @IsOptional()
@@ -31,6 +32,10 @@ export class UpdateCentredDto {
   @IsString()
   @IsNotEmpty()
   country?: string
+
+  @IsOptional()
+  @IsObject()
+  contact?: IContact
 
   @IsOptional()
   @IsString()

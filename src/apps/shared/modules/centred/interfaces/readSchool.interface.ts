@@ -7,9 +7,14 @@ export interface IReadSchool {
   description: string
   address: string
   contact: IContact
+  summary: string
+  coverUrl: string
+  profileUrl: string
+  officialName: string
+  shortName: string
+  favicon: string
   country: string
   type: string
-  favicon: string
   currency: string
   updatedAt: Date
   createdAt: Date

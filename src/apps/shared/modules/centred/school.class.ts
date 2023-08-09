@@ -8,6 +8,11 @@ export interface ISchoolDB {
   name: string
   description: string
   address: string
+  summary: string
+  coverUrl: string
+  profileUrl: string
+  officialName: string
+  shortName: string
   contact: IContact
   country: string
   type: string
@@ -22,6 +27,11 @@ export class School implements ISchoolDB {
   _id: ObjectId
   centredId: ObjectId
   name: string
+  summary: string
+  coverUrl: string
+  profileUrl: string
+  officialName: string
+  shortName: string
   description: string
   address: string
   contact: IContact
@@ -40,6 +50,11 @@ export class School implements ISchoolDB {
     this.description = dbSchool.description
     this.address = dbSchool.address
     this.contact = dbSchool.contact
+    this.summary = dbSchool.summary
+    this.coverUrl = dbSchool.coverUrl
+    this.profileUrl = dbSchool.profileUrl
+    this.officialName = dbSchool.officialName
+    this.shortName = dbSchool.shortName
     this.country = dbSchool.country
     this.type = dbSchool.type
     this.favicon = dbSchool.favicon
@@ -58,10 +73,19 @@ export class School implements ISchoolDB {
       contact: this.contact,
       country: this.country,
       type: this.type,
+      summary: this.summary,
+      coverUrl: this.coverUrl,
+      profileUrl: this.profileUrl,
+      officialName: this.officialName,
+      shortName: this.shortName,
       favicon: this.favicon,
       currency: this.currency,
       updatedAt: this.updatedAt,
       createdAt: this.createdAt,
     }
+  }
+
+  public static test(): void {
+    console.log('from test')
   }
 }

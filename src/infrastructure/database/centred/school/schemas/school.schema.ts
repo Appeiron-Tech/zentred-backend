@@ -13,10 +13,22 @@ export class School implements ISchool {
   centredId: ObjectId
 
   @Prop({ type: String, maxLength: 128 })
-  name: string
+  shortName: string
 
-  @Prop({ type: String, maxLength: 256 })
-  description: string
+  @Prop({ type: String, maxLength: 512 })
+  summary: string
+
+  @Prop({ type: String, maxLength: 128 })
+  officialName: string
+
+  @Prop({ type: String })
+  coverUrl: string
+
+  @Prop({ type: String, maxLength: 512 })
+  favicon: string
+
+  @Prop({ type: String })
+  profileUrl: string
 
   @Prop({ type: String, maxLength: 256 })
   address: string
@@ -29,9 +41,6 @@ export class School implements ISchool {
 
   @Prop({ type: String, maxLength: 16, required: true })
   type: string
-
-  @Prop({ type: String, maxLength: 512 })
-  favicon: string
 
   @Prop({ type: String, maxLength: 3 })
   currency: string

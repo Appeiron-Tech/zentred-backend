@@ -27,8 +27,12 @@ export class CentredService {
 
   async updateCentred(id: string, centred: UpdateCentredDto): Promise<any> {
     try {
-      const dbUpdatedCentred = await this.dbCentredService.update(id, centred)
-      const updateCentred = new Centred(dbUpdatedCentred)
+      console.log('to update')
+      console.log(centred)
+      // const dbUpdatedCentred = await this.dbCentredService.update(id, centred)
+      // const updateCentred = new Centred(dbUpdatedCentred)
+      const dbCentred = await this.dbCentredService.find({ _id: id })
+      const updateCentred = new Centred(dbCentred)
       return updateCentred.parseToRead()
     } catch (error) {
       throw error

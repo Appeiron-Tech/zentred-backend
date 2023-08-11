@@ -17,3 +17,16 @@ export interface ISchool {
   updatedAt: Date
   createdAt: Date
 }
+
+export interface IUpdateSchool {
+  shortName?: string
+  summary?: string
+  coverUrl?: string
+  profileUrl?: string
+  contact?: IContact
+  officialName?: string
+  address?: string
+  country?: string
+  type?: string
+  favicon?: string
+}

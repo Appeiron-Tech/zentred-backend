@@ -5,8 +5,6 @@ import { IReadSchool } from './interfaces/readSchool.interface'
 export interface ISchoolDB {
   _id: ObjectId
   centredId: ObjectId
-  name: string
-  description: string
   address: string
   summary: string
   coverUrl: string
@@ -26,7 +24,6 @@ export class School implements ISchoolDB {
   id?: string
   _id: ObjectId
   centredId: ObjectId
-  name: string
   summary: string
   coverUrl: string
   profileUrl: string
@@ -46,15 +43,13 @@ export class School implements ISchoolDB {
     this._id = dbSchool._id
     this.id = String(dbSchool._id)
     this.centredId = dbSchool.centredId
-    this.name = dbSchool.name
-    this.description = dbSchool.description
+    this.shortName = dbSchool.shortName
     this.address = dbSchool.address
     this.contact = dbSchool.contact
     this.summary = dbSchool.summary
     this.coverUrl = dbSchool.coverUrl
     this.profileUrl = dbSchool.profileUrl
     this.officialName = dbSchool.officialName
-    this.shortName = dbSchool.shortName
     this.country = dbSchool.country
     this.type = dbSchool.type
     this.favicon = dbSchool.favicon
@@ -67,8 +62,6 @@ export class School implements ISchoolDB {
     return {
       id: this.id,
       centredId: String(this.centredId),
-      name: this.name,
-      description: this.description,
       address: this.address,
       contact: this.contact,
       country: this.country,

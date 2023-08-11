@@ -3,8 +3,6 @@ import { IContact } from './centredContact.interface'
 export interface IReadSchool {
   id: string
   centredId: string
-  name: string
-  description: string
   address: string
   contact: IContact
   summary: string

@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Centred, CentredDocument } from './centred/schemas/centred.schema'
 import { FilterQuery, Model } from 'mongoose'
 import { ICentred, IUpdateCentred } from './centred/interfaces/centred.interface'
-import { ISchool } from './school/interfaces/school.interface'
+import { ISchool, IUpdateSchool } from './school/interfaces/school.interface'
 import { School, SchoolDocument } from './school/schemas/school.schema'
 import { ObjectId } from 'mongodb'
 
@@ -41,5 +41,10 @@ export class CentredService {
   async update(id: string, centred: IUpdateCentred): Promise<any> {
     const _id = new ObjectId(id)
     return await this.centredModel.findOneAndUpdate({ _id }, centred, { new: true })
+  }
+
+  async updateSchool(id: string, school: IUpdateSchool): Promise<any> {
+    const _id = new ObjectId(id)
+    return await this.schoolModel.findOneAndUpdate({ _id }, school, { new: true })
   }
 }

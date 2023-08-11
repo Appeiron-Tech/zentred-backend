@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common'
 import { CentredService as DBCentredService } from '../../../../infrastructure/database/centred/centred.service'
 import { UpdateCentredDto } from './dto/updateCentred.dto'
 import { Centred } from './centred.class'
+import { School } from './school.class'
+import { UpdateSchoolDto } from './dto/updateSchool.dto'
 
 @Injectable()
 export class CentredService {
@@ -29,11 +31,21 @@ export class CentredService {
     try {
       console.log('to update')
       console.log(centred)
-      // const dbUpdatedCentred = await this.dbCentredService.update(id, centred)
-      // const updateCentred = new Centred(dbUpdatedCentred)
-      const dbCentred = await this.dbCentredService.find({ _id: id })
-      const updateCentred = new Centred(dbCentred)
+      const dbUpdatedCentred = await this.dbCentredService.update(id, centred)
+      const updateCentred = new Centred(dbUpdatedCentred)
       return updateCentred.parseToRead()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async updateSchool(id: string, school: UpdateSchoolDto): Promise<any> {
+    try {
+      console.log('to update')
+      console.log(school)
+      const dbUpdatedSchool = await this.dbCentredService.updateSchool(id, school)
+      const updateSchool = new School(dbUpdatedSchool)
+      return updateSchool.parseToRead()
     } catch (error) {
       throw error
     }

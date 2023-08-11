@@ -1,5 +1,4 @@
-import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator'
-import { IContact } from '../interfaces/centredContact.interface'
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
 export class UpdateCentredDto {
   @IsOptional()
@@ -9,42 +8,13 @@ export class UpdateCentredDto {
 
   @IsOptional()
   @IsString()
-  summary?: string
-
-  @IsOptional()
-  @IsString()
-  coverUrl?: string
-
-  @IsOptional()
-  @IsString()
-  profileUrl?: string
-
-  @IsOptional()
-  @IsString()
-  officialName?: string
-
-  @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  shortName?: string
-
-  @IsOptional()
-  @IsString()
   @IsNotEmpty()
   country?: string
-
-  @IsOptional()
-  @IsObject()
-  contact?: IContact
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
   type?: string
-
-  @IsOptional()
-  @IsString()
-  favicon?: string
 
   @IsOptional()
   @IsString()

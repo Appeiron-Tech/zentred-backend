@@ -1,6 +1,9 @@
-import { Controller, Post } from '@nestjs/common'
+import { Body, Controller, Param, Patch, Post, UseInterceptors } from '@nestjs/common'
 import { CentredService } from './centred.service'
+import { UpdateSchoolDto } from './dto/updateSchool.dto'
+import { LoggerInterceptor } from '../../interceptors/app-logger.interceptor'
 
+@UseInterceptors(LoggerInterceptor)
 @Controller('admin/school')
 export class SchoolController {
   constructor(private centredService: CentredService) {}
@@ -16,6 +19,15 @@ export class SchoolController {
         type: 'ADM',
       })
       return centred
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  @Patch('/:id')
+  async updateSchool(@Param('id') schoolId: string, @Body() school: UpdateSchoolDto): Promise<any> {
+    try {
+      return await this.centredService.updateSchool(schoolId, school)
     } catch (e) {
       console.error(e)
     }

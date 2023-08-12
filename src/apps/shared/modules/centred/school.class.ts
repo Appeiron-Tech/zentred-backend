@@ -1,4 +1,4 @@
-import { IContact } from './interfaces/centredContact.interface'
+import { IContact, ISns } from './interfaces/school.interface'
 import { ObjectId } from 'mongodb'
 import { IReadSchool } from './interfaces/readSchool.interface'
 
@@ -12,6 +12,7 @@ export interface ISchoolDB {
   officialName: string
   shortName: string
   contact: IContact
+  sns: ISns[]
   country: string
   type: string
   favicon: string
@@ -32,6 +33,7 @@ export class School implements ISchoolDB {
   description: string
   address: string
   contact: IContact
+  sns: ISns[]
   country: string
   type: string
   favicon: string
@@ -46,6 +48,7 @@ export class School implements ISchoolDB {
     this.shortName = dbSchool.shortName
     this.address = dbSchool.address
     this.contact = dbSchool.contact
+    this.sns = dbSchool.sns
     this.summary = dbSchool.summary
     this.coverUrl = dbSchool.coverUrl
     this.profileUrl = dbSchool.profileUrl
@@ -66,6 +69,7 @@ export class School implements ISchoolDB {
       contact: this.contact,
       country: this.country,
       type: this.type,
+      sns: this.sns,
       summary: this.summary,
       coverUrl: this.coverUrl,
       profileUrl: this.profileUrl,

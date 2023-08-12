@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Schema as MongooseSchema, ObjectId } from 'mongoose'
-import { ISchool } from '../interfaces/school.interface'
+import { ISchool, ISns } from '../interfaces/school.interface'
 import { IContact } from '../../centred/interfaces/contact.interface'
 
 export type SchoolDocument = HydratedDocument<School>
@@ -23,6 +23,9 @@ export class School implements ISchool {
 
   @Prop({ type: String })
   coverUrl: string
+
+  @Prop({ type: MongooseSchema.Types.Mixed })
+  sns: ISns[]
 
   @Prop({ type: String, maxLength: 512 })
   favicon: string

@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator'
-import { IContact } from '../interfaces/centredContact.interface'
+import { IsArray, IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator'
+import { IContact, ISns } from '../interfaces/school.interface'
 
 export class UpdateSchoolDto {
   @IsOptional()
@@ -30,6 +30,10 @@ export class UpdateSchoolDto {
   @IsOptional()
   @IsObject()
   contact?: IContact
+
+  @IsOptional()
+  @IsArray()
+  sns?: ISns[]
 
   @IsOptional()
   @IsString()

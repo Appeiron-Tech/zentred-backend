@@ -9,6 +9,7 @@ export interface ISchool {
   coverUrl: string
   profileUrl: string
   contact: IContact
+  sns: ISns[]
   officialName: string
   address: string
   country: string
@@ -29,4 +30,10 @@ export interface IUpdateSchool {
   country?: string
   type?: string
   favicon?: string
+}
+
+export interface ISns {
+  code: string
+  url: string
+  show: boolean
 }

@@ -1,10 +1,11 @@
-import { IContact } from './centredContact.interface'
+import { IContact, ISns } from './school.interface'
 
 export interface IReadSchool {
   id: string
   centredId: string
   address: string
   contact: IContact
+  sns: ISns[]
   summary: string
   coverUrl: string
   profileUrl: string

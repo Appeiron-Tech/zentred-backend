@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { CentredModule as AdmCentredModule } from './apps/shared/modules/centred/centred.module'
 import { CourseModule as AdmCourseModule } from './apps/admin/course/course.module'
 import { AppLoggerModule } from './infrastructure/system/app-logger/app-logger.module'
+import { UserModule as AdmUserModule } from './apps/shared/modules/user/user.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AppLoggerModule } from './infrastructure/system/app-logger/app-logger.m
     //Admin
     AdmCentredModule,
     AdmCourseModule,
+    AdmUserModule,
 
     //System
     AppLoggerModule,

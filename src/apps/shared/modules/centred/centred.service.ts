@@ -29,8 +29,6 @@ export class CentredService {
 
   async updateCentred(id: string, centred: UpdateCentredDto): Promise<any> {
     try {
-      console.log('to update')
-      console.log(centred)
       const dbUpdatedCentred = await this.dbCentredService.update(id, centred)
       const updateCentred = new Centred(dbUpdatedCentred)
       return updateCentred.parseToRead()

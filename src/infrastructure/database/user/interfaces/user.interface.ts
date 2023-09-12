@@ -25,3 +25,12 @@ export interface IUserCreate {
   photoURL: string | null
   lastLoginAt: Date
 }
+
+export interface IUserUpdate {
+  displayName?: string
+  emailVerified?: boolean
+  isAnonymous?: boolean
+  phoneNumber?: string
+  photoURL?: string
+  lastLoginAt?: Date
+}

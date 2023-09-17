@@ -25,6 +25,10 @@ export class UpdateUserDto implements IUpdateUser {
   @IsOptional()
   @IsDateString()
   lastLoginAt: Date
+
+  @IsOptional()
+  @IsDateString()
+  lastLogoutAt: Date
 }
 
 export interface IUpdateUser {
@@ -34,4 +38,5 @@ export interface IUpdateUser {
   phoneNumber?: string
   photoURL?: string
   lastLoginAt?: Date
+  lastLogoutAt?: Date
 }

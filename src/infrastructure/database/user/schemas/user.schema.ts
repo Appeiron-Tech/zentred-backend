@@ -36,6 +36,9 @@ export class User implements IUser {
   @Prop({ type: Date })
   lastLoginAt: Date
 
+  @Prop({ type: Date })
+  lastLogoutAt: Date
+
   @Prop({ type: Date, default: Date.now })
   updatedAt: Date
 

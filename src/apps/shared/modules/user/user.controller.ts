@@ -19,10 +19,19 @@ export class UserController {
   }
 
   @Patch('/login/:uid')
-  async loginUser(@Param('uid') userId: string): Promise<any> {
+  async loginUser(@Param('uid') uid: string): Promise<any> {
     try {
-      const loggedInUser = await this.userService.loginUser(userId)
+      const loggedInUser = await this.userService.loginUser(uid)
       return loggedInUser
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  @Patch('/logout/:uid')
+  async logoutUser(@Param('uid') uid: string): Promise<void> {
+    try {
+      await this.userService.logoutUser(uid)
     } catch (e) {
       console.error(e)
     }

@@ -12,6 +12,7 @@ export interface IUser {
   photoURL: string | null
   createdAt: Date
   lastLoginAt: Date
+  lastLogoutAt: Date
 }
 
 export interface IUserCreate {
@@ -23,7 +24,6 @@ export interface IUserCreate {
   isAnonymous: boolean
   phoneNumber: string | null
   photoURL: string | null
-  lastLoginAt: Date
 }
 
 export interface IUserUpdate {
@@ -33,4 +33,5 @@ export interface IUserUpdate {
   phoneNumber?: string
   photoURL?: string
   lastLoginAt?: Date
+  lastLogoutAt?: Date
 }

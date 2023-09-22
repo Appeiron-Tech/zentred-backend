@@ -1,19 +1,21 @@
-import { Controller, Get, Post, Param, Patch, Body } from '@nestjs/common'
+import { Controller, Get, Post, Param, Patch, Body, UseInterceptors, Query } from '@nestjs/common'
 import { CourseService } from './course.service'
 import { CreateCourseDto } from './dto/createCourse.dto'
 import { UpdateCourseDto } from './dto/updateCourse.dto'
 import { IReadCourse } from './dto/readCourse.dto'
 import { Course } from './course.class'
+import { LoggerInterceptor } from 'src/apps/shared/interceptors/app-logger.interceptor'
+import { GetAllCoursesDto } from './dto/getAllCourses.dto'
 
+@UseInterceptors(LoggerInterceptor)
 @Controller('admin/course')
 export class CourseController {
   constructor(private courseService: CourseService) {}
 
   @Get('/')
-  async getAllCourses(): Promise<IReadCourse[]> {
+  async getAllCourses(@Query() query: GetAllCoursesDto): Promise<IReadCourse[]> {
     try {
-      const centredId = '6498a94e213a7fc800781e1a'
-      const courses = await this.courseService.getCourses(centredId)
+      const courses = await this.courseService.getCourses(query.centredId)
       return courses
     } catch (e) {
       console.error(e)
@@ -24,8 +26,12 @@ export class CourseController {
   async getCourse(@Param('id') courseId: string): Promise<IReadCourse> {
     try {
       const dbCourse = await this.courseService.getCourse(courseId)
-      const course = new Course(dbCourse)
-      return course.parseToRead()
+      if (dbCourse) {
+        const course = new Course(dbCourse)
+        return course.parseToRead()
+      } else {
+        throw new Error('There is not a course for that ID')
+      }
     } catch (e) {
       console.error(e)
     }

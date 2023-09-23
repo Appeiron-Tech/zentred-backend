@@ -6,6 +6,7 @@ export interface IReadCourse {
   category: string
   subCategory?: string
   price?: number
+  isActive: boolean
   currency?: string
   language?: string
   level?: string

@@ -36,6 +36,9 @@ export class Course implements ICourse {
   @Prop({ type: Number })
   price: number
 
+  @Prop({ type: Boolean, default: false })
+  isActive: boolean
+
   @Prop({ type: Number })
   duration: number
 

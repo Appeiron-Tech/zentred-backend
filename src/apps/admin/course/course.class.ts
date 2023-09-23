@@ -11,6 +11,7 @@ export interface ICourseDB {
   category: string
   subCategory?: string
   price: number
+  isActive: boolean
   currency: string
   duration?: number
   durationUnit?: string
@@ -29,6 +30,7 @@ export class Course {
   price: number
   language: string
   level: string
+  isActive: boolean
   currency: string
   duration?: number
   durationUnit?: string
@@ -46,6 +48,7 @@ export class Course {
     this.price = courseDB.price
     this.language = courseDB.language
     this.level = courseDB.level
+    this.isActive = courseDB.isActive
     this.currency = courseDB.currency
     this.duration = courseDB.duration
     this.durationUnit = courseDB.durationUnit
@@ -62,6 +65,7 @@ export class Course {
       category: this.category,
       subCategory: this.subCategory,
       price: this.price,
+      isActive: this.isActive,
       language: this.language,
       level: this.level,
       currency: this.currency,

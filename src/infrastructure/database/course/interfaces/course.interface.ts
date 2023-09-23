@@ -11,6 +11,7 @@ export interface ICourse {
   category: string
   subCategory?: string
   price: number
+  isActive: boolean
   currency: string
   duration?: number
   durationUnit?: string

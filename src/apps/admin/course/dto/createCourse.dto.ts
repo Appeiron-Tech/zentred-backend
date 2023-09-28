@@ -1,4 +1,4 @@
-import { IsMongoId, IsNotEmpty, IsString } from 'class-validator'
+import { IsMongoId, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator'
 import { ObjectId } from 'mongodb'
 
 export class CreateCourseDto {
@@ -8,10 +8,12 @@ export class CreateCourseDto {
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(64)
   title: string
 
   @IsString()
   @IsNotEmpty()
+  @MinLength(32)
   description: string
 
   @IsString()

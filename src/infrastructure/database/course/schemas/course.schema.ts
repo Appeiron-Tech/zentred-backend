@@ -12,7 +12,7 @@ export class Course implements ICourse {
   @Prop({ type: MongooseSchema.Types.ObjectId, required: true, ref: 'Centred' })
   centredId: ObjectId
 
-  @Prop({ type: String, maxLength: 32, required: true })
+  @Prop({ type: String, maxLength: 64, required: true })
   title: string
 
   @Prop({ type: String, minLength: 32, maxLength: 520, required: true })

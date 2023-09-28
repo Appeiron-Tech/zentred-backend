@@ -38,12 +38,14 @@ export class CourseController {
   }
 
   @Post('/')
-  async createCourse(@Body() company: CreateCourseDto): Promise<any> {
+  async createCourse(@Body() course: CreateCourseDto): Promise<any> {
     try {
-      const centred = await this.courseService.createCourse(company)
-      return centred
+      const dbCentred = await this.courseService.createCourse(course)
+      const newCourse = new Course(dbCentred)
+      return newCourse.parseToRead()
     } catch (e) {
-      console.error(e)
+      console.log(e)
+      throw e
     }
   }
 
